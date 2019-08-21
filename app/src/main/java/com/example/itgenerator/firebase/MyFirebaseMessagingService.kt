@@ -1,4 +1,4 @@
-package com.example.itgenerator
+package com.example.itgenerator.firebase
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -13,6 +13,9 @@ import androidx.core.app.NotificationCompat
 import android.util.Log
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import com.example.itgenerator.BuildConfig
+import com.example.itgenerator.MainActivity
+import com.example.itgenerator.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 

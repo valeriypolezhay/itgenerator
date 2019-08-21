@@ -1,4 +1,4 @@
-package com.example.itgenerator
+package com.example.itgenerator.firebase
 
 import android.content.Context
 import android.util.Log

@@ -1,6 +1,5 @@
 package com.example.itgenerator.fragments
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,9 +37,8 @@ class HomeFragment : Fragment() {
         mTTS2 = TextToSpeech(context, TextToSpeech.OnInitListener { status ->
             if (status != TextToSpeech.ERROR) {
                 mTTS2.language = Locale("ru")
-                mTTS2.setPitch(0.7f);
+                mTTS2.setPitch(0.7f)
             }
-
 
         })
 

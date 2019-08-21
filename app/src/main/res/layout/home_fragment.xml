@@ -15,7 +15,7 @@
             app:layout_constraintTop_toTopOf="parent" android:id="@+id/mytext"
             app:layout_constraintVertical_bias="0.091" android:textAlignment="center" android:textSize="30sp"/>
     <Button
-            android:text="Generete position"
+            android:text="Generate position"
             android:layout_width="160dp"
             android:layout_height="80dp"
             android:id="@+id/button"

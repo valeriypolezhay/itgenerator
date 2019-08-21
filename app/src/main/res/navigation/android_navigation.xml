@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android = "http://schemas.android.com/apk/res/android"
-            xmlns:app = "http://schemas.android.com/apk/res-auto"
-            xmlns:tools = "http://schemas.android.com/tools"
-            android:id = "@+id/android_navigation"
-            app:startDestination = "@+id/home_fragment">
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/android_navigation"
+            app:startDestination="@+id/home_fragment">
 
     <fragment
-        android:id = "@+id/home_fragment"
-        android:name = "com.example.itgenerator.fragments.HomeFragment"
-        tools:layout = "@layout/home_fragment"/>
+            android:id="@+id/home_fragment"
+            android:name="com.example.itgenerator.fragments.HomeFragment"
+            tools:layout="@layout/home_fragment"/>
 
     <fragment
-        android:id = "@+id/profile_fragment"
-        android:name = "com.example.itgenerator.fragments.ProfileFragment"
-        tools:layout = "@layout/home_fragment"
-        >
+            android:id="@+id/items_fragment"
+            android:name="com.example.itgenerator.screens.positionlist.ItemsListFragment"
+            tools:layout="@layout/home_fragment"
+    >
+        <action
+                android:id="@+id/action_items_fragment_to_addNewItem2"
+                app:destination="@id/addNewItem"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim"
+                app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
-        android:id = "@+id/settings_fragment"
-        android:name = "com.example.itgenerator.fragments.SettingsFragment"
-        tools:layout = "@layout/home_fragment"
-        />
+            android:id="@+id/settings_fragment"
+            android:name="com.example.itgenerator.fragments.SettingsFragment"
+            tools:layout="@layout/home_fragment"
+    />
+    <fragment android:id="@+id/addNewItem" android:name="com.example.itgenerator.screens.additem.AddItemFragment"
+              android:label="AddItemFragment">
+        <action
+                android:id="@+id/action_addNewItem_to_items_fragment"
+                app:destination="@+id/items_fragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
 
 </navigation>

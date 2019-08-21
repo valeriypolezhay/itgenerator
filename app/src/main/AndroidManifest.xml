@@ -29,7 +29,7 @@
 
 
         <service
-                android:name="com.example.itgenerator.MyFirebaseMessagingService"
+                android:name="com.example.itgenerator.firebase.MyFirebaseMessagingService"
                 android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
