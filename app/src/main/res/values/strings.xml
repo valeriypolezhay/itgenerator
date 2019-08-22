@@ -27,35 +27,9 @@
     <string name="about">About</string>
     <string name="home">Home</string>
     <string name="list">List</string>
-    <string name="possitions_list">Generator uses following positions:
 
-        "Frontend",
-        "Middle",
-        "Manual",
-        "DevOps",
-        "Security",
-        "Manager",
-        "Solution",
-        "Architect",
-        "Software",
-        "Senior",
-        "Developer",
-        "Tester",
-        "Testing",
-        "Team Leader",
-        "Chief",
-        "Java",
-        "Kotlin",
-        ".Net",
-        "Spring",
-        "BDD",
-        "Intermediate",
-        "Advanced",
-        "Performance",
-        "Analysis".
-        In future updates you will be able to customize this list. Stay tuned and hold the frog
-    </string>
     <string name="add_item">Add item</string>
     <string name="name">Name</string>
     <string name="button">Add item</string>
+    <string name="clear_db">Clear all</string>
 </resources>

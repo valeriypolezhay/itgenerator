@@ -12,9 +12,6 @@ import kotlinx.coroutines.*
 class ItemsListViewModel
     (val database: PositionDatabaseDao, application: Application) : AndroidViewModel(application) {
 
-    /**
-     * viewModelJob allows us to cancel all coroutines started by this ViewModel.
-     */
     private var viewModelJob = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -24,7 +21,6 @@ class ItemsListViewModel
     private var items = database.getAllPositions()
 
     init {
-        print(items)
         initialize()
     }
 
@@ -41,5 +37,18 @@ class ItemsListViewModel
             item
         }
     }
+
+
+//    fun clearDB(){
+//        uiScope.launch {
+//            clear()
+//        }
+//    }
+//
+//    private suspend fun clear(){
+//        return withContext(Dispatchers.IO) {
+//            database.clear()
+//        }
+//    }
 
 }

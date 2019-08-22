@@ -18,6 +18,9 @@ interface PositionDatabaseDao {
     @Query("SELECT * FROM positions_list")
     fun getAllPositions(): LiveData<List<Position>>
 
+    @Query("SELECT * FROM positions_list")
+    fun getAllPositionsAsList(): List<Position>
+
     @Query("DELETE FROM positions_list")
     fun clear()
 

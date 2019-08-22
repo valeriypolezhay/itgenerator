@@ -13,6 +13,7 @@ import com.example.itgenerator.database.PositionDatabase
 import com.example.itgenerator.databinding.ItemsListFragmentBinding
 
 class ItemsListFragment : Fragment() {
+    lateinit var binding: ItemsListFragmentBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -21,8 +22,7 @@ class ItemsListFragment : Fragment() {
         setHasOptionsMenu(true)
 
 
-        val binding: ItemsListFragmentBinding =
-            DataBindingUtil.inflate(inflater, R.layout.items_list_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.items_list_fragment, container, false)
 
         val application = requireNotNull(this.activity).application
         val dataSource = PositionDatabase.getInstance(application).positionDatabaseDao
@@ -55,12 +55,22 @@ class ItemsListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return NavigationUI.onNavDestinationSelected(
-            item!!,
-            view!!.findNavController()
-        ) || super.onOptionsItemSelected(item)
 
+//        when (item?.itemId) {
+//            R.id.addNewItem -> {
 
+                return NavigationUI.onNavDestinationSelected(
+                    item!!,
+                    view!!.findNavController()
+                ) || super.onOptionsItemSelected(item)
+
+//            }
+//            R.id.clearDB -> {
+//                binding.itemsViewModel.clearDB()
+//            }
+//            else -> return super.onOptionsItemSelected(item)
+//        }
+//        return true
     }
 
 }

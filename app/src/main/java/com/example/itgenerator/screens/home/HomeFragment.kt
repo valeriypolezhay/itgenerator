@@ -1,18 +1,19 @@
-package com.example.itgenerator.fragments
+package com.example.itgenerator.screens.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-import com.example.itgenerator.generator.PositionGenerator
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import android.speech.tts.TextToSpeech
+import androidx.databinding.DataBindingUtil
 import com.example.itgenerator.R
+import com.example.itgenerator.database.PositionDatabase
+import com.example.itgenerator.databinding.HomeFragmentBinding
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -20,8 +21,9 @@ class HomeFragment : Fragment() {
     lateinit var mTTS: TextToSpeech
     lateinit var mTTS2: TextToSpeech
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
         setHasOptionsMenu(true)
 
         mTTS = TextToSpeech(context, TextToSpeech.OnInitListener { status ->
@@ -30,8 +32,6 @@ class HomeFragment : Fragment() {
                 mTTS.setPitch(1.3f);
                 mTTS.setSpeechRate(1f);
             }
-
-
         })
 
         mTTS2 = TextToSpeech(context, TextToSpeech.OnInitListener { status ->
@@ -39,36 +39,34 @@ class HomeFragment : Fragment() {
                 mTTS2.language = Locale("ru")
                 mTTS2.setPitch(0.7f)
             }
-
         })
 
-        return inflater.inflate(R.layout.home_fragment, container, false)
-    }
+        val binding: HomeFragmentBinding = DataBindingUtil.inflate(
+            inflater, R.layout.home_fragment, container, false
+        )
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        binding.lifecycleOwner = this
 
-
-        val textView: TextView = view.findViewById(R.id.mytext)
-        val generateButton: Button = view.findViewById(R.id.button)
-        val iHoldButton: Button = view.findViewById(R.id.iHoldButton)
-        val youHoldButton: Button = view.findViewById(R.id.youHoldButton)
-
-
-        generateButton.setOnClickListener {
-            val finalText = PositionGenerator().generate()
-            textView.text = finalText
-            mTTS.speak(finalText, TextToSpeech.QUEUE_FLUSH, null, "1")
-        }
-
-
-
-        iHoldButton.setOnClickListener {
+        binding.iHoldButton.setOnClickListener {
             mTTS2.speak("держу жаву", TextToSpeech.QUEUE_FLUSH, null, "1")
         }
 
-        youHoldButton.setOnClickListener {
+        binding.youHoldButton.setOnClickListener {
             mTTS2.speak("держи жаву", TextToSpeech.QUEUE_FLUSH, null, "1")
+        }
+
+        val textView: TextView = binding.mytext
+
+        val application = requireNotNull(this.activity).application
+        val dataSource = PositionDatabase.getInstance(application).positionDatabaseDao
+
+        val homeViewModel = HomeViewModel(dataSource, application)
+
+        binding.button.setOnClickListener {
+            val newPositionName = homeViewModel.generate()
+
+            textView.text = newPositionName
+            mTTS.speak(newPositionName, TextToSpeech.QUEUE_FLUSH, null, "1")
         }
 
         FirebaseInstanceId.getInstance().instanceId
@@ -84,10 +82,16 @@ class HomeFragment : Fragment() {
 
             })
 
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
 
     }
 
-//    fun sendArguments(view: View) {
+    //    fun sendArguments(view: View) {
 //        var action: HomeFragmentDirections.ActionGoto1 =
 //            HomeFragmentDirections.actionGoto1()
 //        action.setTestNumber(1234)
