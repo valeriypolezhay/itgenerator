@@ -12,6 +12,7 @@ import com.example.itgenerator.databinding.AddItemFragmentBinding
 import com.example.itgenerator.R
 import com.example.itgenerator.database.Position
 import com.example.itgenerator.database.PositionDatabase
+import com.google.android.material.snackbar.Snackbar
 
 class AddItemFragment : Fragment() {
     override fun onCreateView(
@@ -33,7 +34,11 @@ class AddItemFragment : Fragment() {
 
             val newItem = Position()
             newItem.positionName = binding.editText2.text.toString()
-            Toast.makeText(context, "Insert", Toast.LENGTH_SHORT).show()
+            Snackbar.make(
+                activity!!.findViewById(android.R.id.content),
+                "Item added",
+                Snackbar.LENGTH_SHORT // How long to display the message.
+            ).show()
 
             model.onAddItem(newItem)
             binding.editText2.text.clear()
