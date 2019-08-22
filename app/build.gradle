@@ -11,7 +11,7 @@ android {
         applicationId "com.example.itgenerator"
         targetSdkVersion 28
         versionCode 1
-        versionName "1.2.1"
+        versionName "1.2.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
@@ -24,6 +24,7 @@ android {
     dataBinding {
         enabled = true
     }
+    buildToolsVersion = '28.0.3'
 }
 
 dependencies {
@@ -55,13 +56,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha02'
 
     //Firebase
-    implementation 'com.google.firebase:firebase-core:17.0.1'
-    implementation 'com.google.firebase:firebase-iid:19.0.1'
-    implementation 'com.google.firebase:firebase-messaging:19.0.1'
+    implementation 'com.google.firebase:firebase-core:17.1.0'
+    implementation 'com.google.firebase:firebase-iid:20.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
     implementation 'android.arch.work:work-runtime:1.0.1'
 
     implementation "com.google.android.material:material:$version_material"
-    implementation "androidx.appcompat:appcompat:$version_appCompat"
+    implementation "androidx.appcompat:appcompat:${version_appCompat}"
     implementation "androidx.cardview:cardview:$version_cardView"
     implementation "androidx.recyclerview:recyclerview:$version_recycler"
 }

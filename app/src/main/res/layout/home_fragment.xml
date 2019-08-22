@@ -27,43 +27,46 @@
                 android:textSize="30sp" />
 
         <Button
-                android:text="Generate position"
+                android:id="@+id/button"
                 android:layout_width="160dp"
                 android:layout_height="80dp"
-                android:id="@+id/button"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/roundedbutton"
+                android:text="Generate position"
                 android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/youHoldButton"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/iHoldButton"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="8dp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/youHoldButton"
                 app:layout_constraintTop_toBottomOf="@+id/mytext" />
 
         <Button
-                android:text="Держу"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
                 android:id="@+id/iHoldButton"
-                app:layout_constraintStart_toEndOf="@+id/button"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/roundedbutton"
+                android:text="Держу"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/button"
                 app:layout_constraintTop_toBottomOf="@+id/mytext" />
 
         <Button
-                android:text="Держи"
+                android:id="@+id/youHoldButton"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:id="@+id/youHoldButton"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintEnd_toStartOf="@+id/button"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/roundedbutton"
+                android:text="Держи"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mytext" />
 
 

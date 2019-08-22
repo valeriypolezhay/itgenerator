@@ -49,28 +49,18 @@ class ItemsListFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater?.inflate(R.menu.items_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(
+            item!!,
+            view!!.findNavController()
+        ) || super.onOptionsItemSelected(item)
 
-//        when (item?.itemId) {
-//            R.id.addNewItem -> {
 
-                return NavigationUI.onNavDestinationSelected(
-                    item!!,
-                    view!!.findNavController()
-                ) || super.onOptionsItemSelected(item)
-
-//            }
-//            R.id.clearDB -> {
-//                binding.itemsViewModel.clearDB()
-//            }
-//            else -> return super.onOptionsItemSelected(item)
-//        }
-//        return true
     }
 
 }

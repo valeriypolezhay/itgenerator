@@ -37,6 +37,7 @@ class HomeViewModel(val database: PositionDatabaseDao, application: Application)
             items.forEach {
                 customList.add(it.positionName)
             }
+
             getGreatPositionName(customList)
 
 

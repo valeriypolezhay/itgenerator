@@ -5,8 +5,4 @@
             android:id="@+id/addNewItem"
             android:title="@string/add_item"/>
 
-<!--    <item-->
-<!--            android:id="@+id/clearDB"-->
-<!--            android:title="@string/clear_db"/>-->
-
 </menu>
