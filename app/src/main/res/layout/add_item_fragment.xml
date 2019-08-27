@@ -26,7 +26,8 @@
                     android:inputType="textPersonName"
                     android:text="@{itemText}"
                     android:ems="10"
-                    android:id="@+id/editText2"/>
+                    android:id="@+id/editText2"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
 
             <Button
                     android:id="@+id/button3"

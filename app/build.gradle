@@ -65,5 +65,9 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${version_appCompat}"
     implementation "androidx.cardview:cardview:$version_cardView"
     implementation "androidx.recyclerview:recyclerview:$version_recycler"
+
+
+    //setting
+    implementation 'androidx.preference:preference:1.1.0-rc01'
 }
 apply plugin: 'com.google.gms.google-services'

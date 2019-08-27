@@ -1,19 +1,24 @@
 package com.example.itgenerator.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.itgenerator.R
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+import com.google.android.material.snackbar.Snackbar
 
-class SettingsFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.settings_fragment, container, false)
+class SettingsFragment : PreferenceFragmentCompat() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.settings, rootKey)
+    }
+
+    override fun onPreferenceTreeClick(preference: Preference?): Boolean {
+
+        Snackbar.make(
+            activity!!.findViewById(android.R.id.content),
+            "Can't Touch This",
+            Snackbar.LENGTH_SHORT // How long to display the message.
+        ).show()
+
+        return true
     }
 }

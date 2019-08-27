@@ -29,8 +29,8 @@ class HomeFragment : Fragment() {
         mTTS = TextToSpeech(context, TextToSpeech.OnInitListener { status ->
             if (status != TextToSpeech.ERROR) {
                 mTTS.language = Locale.US
-                mTTS.setPitch(1.3f);
-                mTTS.setSpeechRate(1f);
+                mTTS.setPitch(1.3f)
+                mTTS.setSpeechRate(1f)
             }
         })
 

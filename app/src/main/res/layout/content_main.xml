@@ -27,9 +27,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
+
             android:background="#FFEBEE"
+            android:foregroundGravity="bottom|center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/nav_drawer_menu" />
 
