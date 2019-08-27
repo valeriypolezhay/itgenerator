@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itgenerator.R
-import com.example.itgenerator.TextItemViewHolder
 import com.example.itgenerator.database.Position
 
 class ItemsListAdapter : ListAdapter<Position, ItemsListAdapter.ViewHolder>(PositionDiffCallback()) {

@@ -27,7 +27,7 @@
                     android:text="@{itemText}"
                     android:ems="10"
                     android:id="@+id/editText2"
-                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" />
 
             <Button
                     android:id="@+id/button3"

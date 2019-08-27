@@ -18,7 +18,7 @@ class ItemsListViewModel
 
 //    val allItems = MutableLiveData<List<Position?>>()
 
-    private var items = database.getAllPositions()
+    private lateinit var items :LiveData<List<Position>> //= database.getAllPositions()
 
     init {
         initialize()
