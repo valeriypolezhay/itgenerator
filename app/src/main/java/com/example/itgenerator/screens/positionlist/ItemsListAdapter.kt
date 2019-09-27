@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itgenerator.R
 import com.example.itgenerator.database.Position
+import com.example.itgenerator.databinding.ItemsListFragmentBinding
 
-class ItemsListAdapter : ListAdapter<Position, ItemsListAdapter.ViewHolder>(PositionDiffCallback()) {
+class ItemsListAdapter :
+    ListAdapter<Position, ItemsListAdapter.ViewHolder>(PositionDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -18,7 +20,6 @@ class ItemsListAdapter : ListAdapter<Position, ItemsListAdapter.ViewHolder>(Posi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ViewHolder.from(parent)
     }
 
@@ -34,6 +35,9 @@ class ItemsListAdapter : ListAdapter<Position, ItemsListAdapter.ViewHolder>(Posi
             }
         }
     }
+
+
+
 }
 
 class PositionDiffCallback : DiffUtil.ItemCallback<Position>() {

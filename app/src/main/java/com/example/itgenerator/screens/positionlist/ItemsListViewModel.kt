@@ -39,16 +39,28 @@ class ItemsListViewModel
     }
 
 
-//    fun clearDB(){
-//        uiScope.launch {
-//            clear()
-//        }
-//    }
-//
-//    private suspend fun clear(){
-//        return withContext(Dispatchers.IO) {
-//            database.clear()
-//        }
-//    }
+    fun clearDB(){
+        uiScope.launch {
+            clear()
+        }
+    }
+
+    private suspend fun clear(){
+        return withContext(Dispatchers.IO) {
+            database.clear()
+        }
+    }
+
+    fun deleteItem(itemToDelete:String){
+        uiScope.launch {
+            deleteByNumber(itemToDelete)
+        }
+    }
+
+    private suspend fun deleteByNumber(itemToDelete:String){
+        return withContext(Dispatchers.IO) {
+            database.deleteByPosition(itemToDelete)
+        }
+    }
 
 }

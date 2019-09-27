@@ -12,4 +12,9 @@ data class Position(
     @ColumnInfo(name = "position_name")
     var positionName: String = "undefined"
 
-)
+
+) {
+    override fun toString(): String {
+        return positionName
+    }
+}

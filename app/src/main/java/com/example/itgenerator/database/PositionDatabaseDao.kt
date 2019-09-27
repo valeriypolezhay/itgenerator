@@ -27,4 +27,9 @@ interface PositionDatabaseDao {
     @Query("SELECT * from positions_list WHERE positionID = :key")
     fun get(key: Long): Position?
 
+    @Query("DELETE from positions_list WHERE position_name = :key")
+    fun deleteByPosition(key: String)
+
+
+
 }
