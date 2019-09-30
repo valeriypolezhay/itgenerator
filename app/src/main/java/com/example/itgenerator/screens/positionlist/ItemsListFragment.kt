@@ -109,8 +109,6 @@ class ItemsListFragment : Fragment() {
 
                 binding.itemsViewModel?.deleteItem(text)
 
-                adapter.notifyDataSetChanged()
-
 
             }
         }
