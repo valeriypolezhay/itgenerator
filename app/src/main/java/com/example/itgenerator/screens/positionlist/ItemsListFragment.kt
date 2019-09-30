@@ -1,8 +1,14 @@
 package com.example.itgenerator.screens.positionlist
 
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,6 +23,8 @@ import com.example.itgenerator.databinding.ItemsListFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.add_item_fragment.view.*
 import kotlinx.android.synthetic.main.item_view_holder.view.*
+import kotlin.math.abs
+import androidx.core.content.ContextCompat.getSystemService as getSystemService1
 
 
 class ItemsListFragment : Fragment() {
@@ -24,11 +32,15 @@ class ItemsListFragment : Fragment() {
 
     lateinit var adapter: ItemsListAdapter
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         setHasOptionsMenu(true)
 
 
@@ -117,6 +129,7 @@ class ItemsListFragment : Fragment() {
         itemTouchhelper.attachToRecyclerView(binding.recyclerItemsList)
 
     }
+
 
 
 }

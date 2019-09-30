@@ -1,25 +1,43 @@
 package com.example.itgenerator.screens.home
 
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
-
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.iid.FirebaseInstanceId
-import android.speech.tts.TextToSpeech
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.itgenerator.R
 import com.example.itgenerator.database.PositionDatabase
 import com.example.itgenerator.databinding.HomeFragmentBinding
+import com.example.itgenerator.firebase
+import com.example.itgenerator.sensors.AccelerometerListener
+import com.example.itgenerator.sensors.AccelerometerManager
 import java.util.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), AccelerometerListener {
+
+    override fun onAccelerationChanged(x: Float, y: Float, z: Float) {
+
+    }
+
+    override fun onShake(force: Float) {
+        generateAndSpeak()
+
+        Toast.makeText(context, "Motion detected", Toast.LENGTH_SHORT).show()
+        Log.i("GYRO", "motion done")
+    }
+
 
     lateinit var mTTS: TextToSpeech
     lateinit var mTTS2: TextToSpeech
+
+    lateinit var homeViewModel: HomeViewModel
+    private lateinit var textView: TextView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -55,49 +73,64 @@ class HomeFragment : Fragment() {
             mTTS2.speak("держи жаву", TextToSpeech.QUEUE_FLUSH, null, "1")
         }
 
-        val textView: TextView = binding.mytext
+        textView = binding.mytext
 
         val application = requireNotNull(this.activity).application
         val dataSource = PositionDatabase.getInstance(application).positionDatabaseDao
 
-        val homeViewModel = HomeViewModel(dataSource, application)
+        homeViewModel = HomeViewModel(dataSource, application)
 
         binding.button.setOnClickListener {
-            val newPositionName = homeViewModel.generate()
 
-            textView.text = newPositionName
-            mTTS.speak(newPositionName, TextToSpeech.QUEUE_FLUSH, null, "1")
+            generateAndSpeak()
         }
 
-        FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-//                    Log.w(TAG, "getInstanceId failed", task.exception)
-                    return@OnCompleteListener
-                }
-
-                // Get new Instance ID token
-                val token = task.result?.token
-
-
-            })
+        firebase()
 
         return binding.root
+    }
+
+
+    private fun generateAndSpeak() {
+        val newPositionName = homeViewModel.generate()
+
+        textView.text = newPositionName
+        mTTS.speak(newPositionName, TextToSpeech.QUEUE_FLUSH, null, "1")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
     }
 
-    //    fun sendArguments(view: View) {
-//        var action: HomeFragmentDirections.ActionGoto1 =
-//            HomeFragmentDirections.actionGoto1()
-//        action.setTestNumber(1234)
-//        Navigation.findNavController(view).navigate(action)
-//    }
+    override fun onResume() {
+        super.onResume()
+        if (AccelerometerManager.isSupported(context)) {
+            AccelerometerManager.startListening(this)
+        }
+    }
 
+    override fun onStop() {
+        super.onStop()
+
+        //Check device supported Accelerometer senssor or not
+        if (AccelerometerManager.isListening()) {
+
+            //Start Accelerometer Listening
+            AccelerometerManager.stopListening()
+
+//            Toast.makeText(context, "onStop Accelerometer Stopped", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (AccelerometerManager.isListening()) {
+            AccelerometerManager.stopListening()
+
+//            Toast.makeText(context, "onDestroy Accelerometer Stopped", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
 
 

@@ -16,8 +16,6 @@ class ItemsListViewModel
 
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-//    val allItems = MutableLiveData<List<Position?>>()
-
     private lateinit var items :LiveData<List<Position>> //= database.getAllPositions()
 
     init {

@@ -11,13 +11,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.settings, rootKey)
     }
 
-    override fun onPreferenceTreeClick(preference: Preference?): Boolean {
+     override fun onPreferenceTreeClick(preference: Preference?): Boolean {
 
-        Snackbar.make(
-            activity!!.findViewById(android.R.id.content),
-            "Can't Touch This",
-            Snackbar.LENGTH_SHORT // How long to display the message.
-        ).show()
+//        Snackbar.make(
+//            activity!!.findViewById(android.R.id.content),
+//            "Can't Touch This",
+//            Snackbar.LENGTH_SHORT // How long to display the message.
+//        ).show()
 
         return true
     }
