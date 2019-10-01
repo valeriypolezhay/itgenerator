@@ -26,9 +26,7 @@ class HomeFragment : Fragment(), AccelerometerListener {
 
     override fun onShake(force: Float) {
         generateAndSpeak()
-
-        Toast.makeText(context, "Motion detected", Toast.LENGTH_SHORT).show()
-        Log.i("GYRO", "motion done")
+        Log.i("GYRO", "Motion detected")
     }
 
 

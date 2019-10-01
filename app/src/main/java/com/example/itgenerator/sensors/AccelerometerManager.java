@@ -5,10 +5,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.widget.Toast;
 
 import java.util.List;
-
 
 public class AccelerometerManager {
 
@@ -19,7 +17,7 @@ public class AccelerometerManager {
      * Accuracy configuration
      */
 
-        private static float threshold = 50.0f;
+    private static float threshold = 30.0f;
     private static int interval = 200;
 
     private static Sensor sensor;
@@ -185,8 +183,8 @@ public class AccelerometerManager {
                             // trigger shake event
                             listener.onShake(force);
                         } else {
-                            Toast.makeText(context, "No Motion detected",
-                                    Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(context, "No Motion detected",
+//                                    Toast.LENGTH_SHORT).show();
 
                         }
                         lastShake = now;
